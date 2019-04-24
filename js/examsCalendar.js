@@ -59,8 +59,8 @@ function parseRow(row){
     var imgElement = document.createElement("img");
 
     linkElement.setAttribute("href", link);
-    
-    imgElement.setAttribute("target", "_blank");
+    linkElement.setAttribute("target", "_blank");
+
     imgElement.setAttribute("src", chrome.extension.getURL("img/calendar.png"));
     imgElement.setAttribute("height", "30");
     imgElement.setAttribute("width", "30");
