@@ -5,9 +5,9 @@ Ainda em fase inicial.
 
 Features atuais:
 * Mostra a média ponderada na página plano curricular
+* Adicionar exames ao google calendar com um clique
 
 Features para adicionar:
-* Adicionar exames ao google calendar com um clique
 * ...
 
 ## Installation
