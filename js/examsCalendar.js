@@ -43,7 +43,7 @@ function parseRow(row){
     //Create link
     link = new URL("https://www.google.com/calendar/render");
     link.searchParams.append("action", "TEMPLATE");
-    link.searchParams.append("text", "Exame " + epoca + " " + disciplina);
+    link.searchParams.append("text", "[" + disciplina "] " + epoca);
     datestart = data.toISOString().replace(/-|:|\.\d\d\d/g,"");
     data.setHours(data.getHours() + 2);
     dateend = data.toISOString().replace(/-|:|\.\d\d\d/g,"");
@@ -60,6 +60,7 @@ function parseRow(row){
 
     linkElement.setAttribute("href", link);
     
+    imgElement.setAttribute("target", "_blank");
     imgElement.setAttribute("src", chrome.extension.getURL("img/calendar.png"));
     imgElement.setAttribute("height", "30");
     imgElement.setAttribute("width", "30");
