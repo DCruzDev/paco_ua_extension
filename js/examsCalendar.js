@@ -43,7 +43,7 @@ function parseRow(row){
     //Create link
     link = new URL("https://www.google.com/calendar/render");
     link.searchParams.append("action", "TEMPLATE");
-    link.searchParams.append("text", "[" + disciplina "] " + epoca);
+    link.searchParams.append("text", "[" + disciplina + "] " + epoca);
     datestart = data.toISOString().replace(/-|:|\.\d\d\d/g,"");
     data.setHours(data.getHours() + 2);
     dateend = data.toISOString().replace(/-|:|\.\d\d\d/g,"");

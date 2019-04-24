@@ -14,4 +14,4 @@ Features para adicionar:
 
 Chrome: [Webstore Link](https://chrome.google.com/webstore/detail/paco-ua-extension/lcgdmdafgpgplkiaiifgamdkcnpnnopp)
 
-Firefox: [Download signed extension](https://github.com/DCruzDev/paco_ua_extension/releases/)
+Firefox: [Download signed extension](https://github.com/DCruzDev/paco_ua_extension/releases/latest)
