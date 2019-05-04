@@ -36,7 +36,7 @@ function parseRow(row){
     tempHours = row[3].innerText.split(":")
     data = new Date();
     data.setDate(tempDate[0]);
-    data.setMonth(tempDate[1]);
+    data.setMonth(tempDate[1]-1);
     data.setFullYear(tempDate[2]);
     data.setHours(tempHours[0],tempHours[1],0);
 
