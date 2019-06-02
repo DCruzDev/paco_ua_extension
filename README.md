@@ -6,6 +6,7 @@ Ainda em fase inicial.
 Features atuais:
 * Mostra a média ponderada na página plano curricular
 * Adicionar exames ao google calendar com um clique
+* Mostra o total gasto em propinas
 
 Features para adicionar:
 * ...
