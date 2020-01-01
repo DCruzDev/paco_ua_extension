@@ -17,7 +17,7 @@ function parseRow(row){
     var disciplina, data, codigo, sala, epoca;
     var link;
 
-    tempD = row[2].innerText.replace(" DE ", " ").replace(" E "," ").split(" ");
+    tempD = row[2].innerText.replace(" DE ", " ").replace(" E "," ").replace(" À "," ").replace(" AOS "," ").split(" ");
     disciplina = "";
     for (var j = 0; j < tempD.length; j++){
         disciplina = disciplina + tempD[j][0];
