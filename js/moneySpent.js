@@ -4,8 +4,9 @@ writeStats(stats);
 
 // Write stats on table at the end of page
 function writeStats(stats){
-    tableToWrite = document.querySelector("tr.table_line:nth-child(33) > td:nth-child(1)");
-	
+	tableToWrite = document.querySelector("#template_main > p:nth-child(12) > table:nth-child(1) > tbody").children;
+	tableToWrite = tableToWrite[tableToWrite.length-3];
+	tableToWrite = tableToWrite.firstElementChild;
 	//Create Element to add
 	var newNode1 = document.createElement("p");	
 	var newB = document.createElement("b");
@@ -14,7 +15,7 @@ function writeStats(stats){
     newNode1.appendChild(newB);
 	
 	//Add elements
-    tableToWrite.insertBefore(newNode1, tableToWrite.childNodes[0]);
+    tableToWrite.append(newNode1);
 }
 
 function parseMainTable (table){
@@ -22,7 +23,7 @@ function parseMainTable (table){
 	// Go Through each row
 	for(i=2;i<table.length-3;i++){
         row = table[i].children;
-        console.log(row);
+        //console.log(row);
         text = row[1].innerHTML;
         value = text.split(" ")[0].replace(",",".");
 		sum = sum + parseFloat(value);
