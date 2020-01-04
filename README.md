@@ -21,4 +21,5 @@ Firefox: [Download signed extension](https://github.com/DCruzDev/paco_ua_extensi
 
 @RodrigoRosmaninho
 @rodrigogonegit
+@jtsimoes
 
