@@ -17,10 +17,16 @@ function parseRow(row){
     var disciplina, data, codigo, sala, epoca;
     var link;
 
-    tempD = row[2].innerText.replace(" DE ", " ").replace(" E "," ").split(" ");
+    tempD = row[2].innerText.replace(" DE ", " ").replace(" E "," ").replace(" À "," ").replace(" AOS "," ").replace(" PARA "," ").split(" ");
     disciplina = "";
     for (var j = 0; j < tempD.length; j++){
-        disciplina = disciplina + tempD[j][0];
+        //Check if 'I' is a letter or a roman number
+        if (tempD[j][0] == "I" && tempD[j][1] == "I")
+            //If number, write the whole number
+            disciplina = disciplina + tempD[j];
+        else
+            //If not, write just the first letter
+        	disciplina = disciplina + tempD[j][0];
     }
     codigo = row[1].innerText;
     sala = row[4].innerText;
