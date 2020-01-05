@@ -8,14 +8,12 @@ function writeStats(stats){
 	tableToWrite = tableToWrite[tableToWrite.length-3];
 	tableToWrite = tableToWrite.firstElementChild;
 	//Create Element to add
-	var newNode1 = document.createElement("p");	
-	var newB = document.createElement("b");
+	var elementToAdd = document.createElement("b");
 	
-    newB.innerText = "Dinheiro total gasto em propinas: " + stats["totalmoney"].toFixed(2) + "€";
-    newNode1.appendChild(newB);
+    elementToAdd.innerText = "Dinheiro total gasto em propinas: " + stats["totalmoney"].toFixed(2) + "€";
 	
 	//Add elements
-    tableToWrite.append(newNode1);
+	tableToWrite.append(elementToAdd);
 }
 
 function parseMainTable (table){
@@ -24,9 +22,13 @@ function parseMainTable (table){
 	for(i=2;i<table.length-3;i++){
         row = table[i].children;
         //console.log(row);
-        text = row[1].innerHTML;
-        value = text.split(" ")[0].replace(",",".");
-		sum = sum + parseFloat(value);
+		text = row[1].innerHTML;
+		// Check if value has been paid
+		if (row[6].innerText == "Regular"){
+			value = text.split(" ")[0].replace(",",".");
+			sum = sum + parseFloat(value);
+		}
+		
 	};
 	stats = {};
 	stats["totalmoney"] = sum;
