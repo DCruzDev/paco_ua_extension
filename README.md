@@ -19,9 +19,9 @@ Chrome: [Webstore Link](https://chrome.google.com/webstore/detail/paco-ua-extens
 Firefox: [Download signed extension](https://github.com/DCruzDev/paco_ua_extension/releases/latest)
 
 ## Contributors (Big Thanks)
+- [Rodrigo Rosmaninho](https://github.com/RodrigoRosmaninho)
+- [Rodrigo Silva](https://github.com/rodrigogonegit)
+- [João Tomás](https://github.com/jtsimoes)
+- [Filipe Vale](https://github.com/FilipeMiguelVale)
 
-@RodrigoRosmaninho
-@rodrigogonegit
-@jtsimoes
-@FilipeMiguelVale
 

@@ -96,7 +96,7 @@ function parseSubjectsRow(row){
         dateend = data.toISOString().replace(/-|:|\.\d\d\d/g,"");
         link.searchParams.append("dates", datestart + "/" + dateend)
         link.searchParams.append("recur","RRULE:FREQ=WEEKLY;BYDAY="+subjects[i]["day"]+";UNTIL=20210626T000000Z;");
-        link.searchParams.append("location", subjects[i]["name"]);
+        link.searchParams.append("location", subjects[i]["room"]);
         link.searchParams.append("sf", "true");
         link.searchParams.append("output", "xml");
 
@@ -104,6 +104,8 @@ function parseSubjectsRow(row){
         linkElement.setAttribute("target", "_blank");
 
         imgElement.setAttribute("src", chrome.extension.getURL("img/calendar.png"));
+        imgElement.setAttribute("title",subjects[i]["name"]+" "+subjects[i]["day"] +"\n"+subjects[i]["start"]);
+
         imgElement.setAttribute("height", "30");
         imgElement.setAttribute("width", "30");
         imgElement.setAttribute("alt", "Calendar Icon");
