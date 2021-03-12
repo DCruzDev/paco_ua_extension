@@ -73,8 +73,6 @@ function parseRow(row){
     for (var i = 0; i < subjects.length; i++) {
         var aux = {}
         aux["name"]=subjects[i].innerText.split("(")[0]
-        console.log(subjects[i].innerText.split("(")[0].includes("OT"))
-        console.log(subjects.length==1)
         if (subjects[i].innerText.split("(")[0].includes("OT")) {
                 if (subjects.length==1) {
                     subjects[i].parentElement.classList.add("OT_colapse")
