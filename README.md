@@ -7,6 +7,7 @@ Features atuais:
 * Mostra a média ponderada na página plano curricular
 * Adicionar exames ao google calendar com um clique
 * Mostra o total gasto em propinas
+* Adicionar o horario ao google calendar com um clique
 
 Features para adicionar:
 * ...
@@ -22,4 +23,5 @@ Firefox: [Download signed extension](https://github.com/DCruzDev/paco_ua_extensi
 @RodrigoRosmaninho
 @rodrigogonegit
 @jtsimoes
+@FilipeMiguelVale
 
