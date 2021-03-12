@@ -8,6 +8,7 @@ Features atuais:
 * Adicionar exames ao google calendar com um clique
 * Mostra o total gasto em propinas
 * Adicionar o horario ao google calendar com um clique
+* Mostrar ou Ocultar OT's no Horário
 
 Features para adicionar:
 * ...

@@ -1,12 +1,59 @@
-mainTable = document.querySelector("#template_main > table > tbody").children
-console.log(mainTable)
-subjectsTable=document.querySelectorAll("#template_main > table > tbody")[1].children
+var mainTable = document.querySelector("#template_main > table > tbody").children
+var subjectsTable=document.querySelectorAll("#template_main > table > tbody")[1].children
+
 var json_subjects = {};
 
-
+parseOTs(mainTable);
 parseMainTable(mainTable);
 parseSubjectsTable(subjectsTable)
+show()
 
+
+function parseOTs(table){
+    table[0].querySelectorAll("td")[0].colSpan = table[0].querySelectorAll("td")[0].colSpan-10;
+    var td = document.createElement("td");
+    td.className ="table_topcol"
+    td.colSpan =10
+    td.insertAdjacentHTML('beforeend', `<td class="table_topcol" colspan="10"><div>
+  <input type="checkbox" id="show_ots" name="scales" checked="" ">
+  <label for="scales" align=" center"> Ocultar OT's</label>
+    </div></td>`);
+    table[0].appendChild(td);
+    document.getElementById("show_ots").onclick = function() {show()};
+    
+}
+function show(){
+    var ots_col = document.querySelectorAll(".OT_colapse")
+    if (document.querySelector("#show_ots").checked){
+        for (var i = 0; i < ots_col.length; i++) {
+            ots_col[i].style.visibility = "collapse";
+        }
+    }
+    else{
+        for (var i = 0; i < ots_col.length; i++) {
+            ots_col[i].style.visibility = "";
+        }
+    }
+    var ots = document.querySelectorAll(".OT")
+    if (document.querySelector("#show_ots").checked){
+        for (var i = 0; i < ots.length; i++) {
+            
+            ots[i].classList.add(ots[i].parentElement.className)
+            ots[i].style.pointerEvents = "none";
+            ots[i].style.color = getComputedStyle(ots[i].parentElement).backgroundColor ;
+        }
+    }
+    else{
+        for (var i = 0; i < ots.length; i++) {
+            ots[i].classList.remove(ots[i].parentElement.className)
+            ots[i].style.pointerEvents = "";
+            ots[i].style.color=""
+        }
+    }
+}
+`background: #FFDFBF;
+    color: #FFDFBF;
+    pointer-events: none;`
 
 
 
@@ -14,6 +61,7 @@ function parseMainTable(table){
     var i;
     var row;
     //Cycle through rows
+    
     for(i=2;i<table.length-2;i++){
         row = table[i];
         parseRow(row);
@@ -25,6 +73,15 @@ function parseRow(row){
     for (var i = 0; i < subjects.length; i++) {
         var aux = {}
         aux["name"]=subjects[i].innerText.split("(")[0]
+        console.log(subjects[i].innerText.split("(")[0].includes("OT"))
+        console.log(subjects.length==1)
+        if (subjects[i].innerText.split("(")[0].includes("OT")) {
+                if (subjects.length==1) {
+                    subjects[i].parentElement.classList.add("OT_colapse")
+                }else{
+                    subjects[i].classList.add("OT")
+                }
+        }
         day = subjects[i].title.split(": ")[1].split("\n")[0]
         if (day == "Segunda")    
             aux["day"]= "MO"
@@ -48,7 +105,6 @@ function parseRow(row){
             json_subjects[subjects[i].bgColor] = [aux]
         }
     }
-    console.log(json_subjects)
 
 }
 
@@ -63,15 +119,18 @@ function parseSubjectsTable(table){
 }
 
 function parseSubjectsRow(row){
-    var tempDate, tempHours;
+    var tempHours;
     var datestart, dateend;
-    var disciplina, data, codigo, sala, epoca;
+    var data;
     var link;
+
+    if (row[1].innerText.includes("OT")) {
+               row[1].parentElement.classList.add("OT_colapse")
+    }
     
     //Insert link to create event in table
-    console.log(row[0].bgColor)
+    
     subjects = json_subjects[row[0].bgColor]
-    console.log(subjects)
     var newNode = document.createElement("td");
     for (var i = 0; i < subjects.length; i++) {
         var linkElement = document.createElement("a");
@@ -90,7 +149,7 @@ function parseSubjectsRow(row){
         
         datestart = data.toISOString().replace(/-|:|\.\d\d\d/g,"");
         min = parseFloat(subjects[i]["duration"].replace("h","").replace(",","."))*60
-        console.log(min)
+
         data = new Date(data.getTime()+min*60000)
 
         dateend = data.toISOString().replace(/-|:|\.\d\d\d/g,"");
@@ -115,7 +174,6 @@ function parseSubjectsRow(row){
     }
     
     row[0].parentElement.appendChild(newNode);
-
     
 }
 
