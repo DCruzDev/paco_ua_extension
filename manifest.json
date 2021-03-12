@@ -22,6 +22,10 @@
         {
             "matches": ["https://paco.ua.pt/secvirtual/c_estadoDasProprinas.asp"],
             "js": ["js/moneySpent.js"]
+        },
+        {
+            "matches": ["https://paco.ua.pt/secvirtual/horarios/c_horario_aluno.asp"],
+            "js": ["js/horarioCalendar.js"]
         }
     ],
 
