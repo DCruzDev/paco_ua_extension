@@ -3,9 +3,11 @@ var subjectsTable=document.querySelectorAll("#template_main > table > tbody")[1]
 
 var json_subjects = {};
 
+
 parseOTs(mainTable);
 parseMainTable(mainTable);
 parseSubjectsTable(subjectsTable)
+checkboxStatus()
 show()
 
 
@@ -15,7 +17,7 @@ function parseOTs(table){
     td.className ="table_topcol"
     td.colSpan =10
     td.insertAdjacentHTML('beforeend', `<td class="table_topcol" colspan="10"><div>
-  <input type="checkbox" id="show_ots" name="scales" checked="" ">
+  <input type="checkbox" id="show_ots" name="scales">
   <label for="scales" align=" center"> Ocultar OT's</label>
     </div></td>`);
     table[0].appendChild(td);
@@ -23,6 +25,9 @@ function parseOTs(table){
     
 }
 function show(){
+
+    localStorage["checkbox"] = document.querySelector("#show_ots").checked
+
     var ots_col = document.querySelectorAll(".OT_colapse")
     if (document.querySelector("#show_ots").checked){
         for (var i = 0; i < ots_col.length; i++) {
@@ -51,9 +56,18 @@ function show(){
         }
     }
 }
-`background: #FFDFBF;
-    color: #FFDFBF;
-    pointer-events: none;`
+
+function checkboxStatus() {
+
+  if (localStorage["checkbox"]==undefined) {
+    console.log("Undefined")
+    localStorage["checkbox"]=true
+    document.querySelector("#show_ots").checked = true
+  }
+  document.querySelector("#show_ots").checked = localStorage["checkbox"] == "true"
+
+}
+
 
 
 
