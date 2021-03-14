@@ -42,15 +42,33 @@ function show(){
     var ots = document.querySelectorAll(".OT")
     if (document.querySelector("#show_ots").checked){
         for (var i = 0; i < ots.length; i++) {
-            
-            ots[i].classList.add(ots[i].parentElement.className)
+            if (ots[i].parentElement.className ==="") {
+                ots[i].classList.add(ots[i].parentElement.querySelectorAll("td")[0].className)
+            }else{
+                ots[i].classList.add(ots[i].parentElement.className)
+            }
+            if (ots[i].title.split(": ")[2].split("\n")[0].split(",").length ==1)
+                ots[i].previousSibling.style.borderRight="1px dotted #800000"
+            if (ots[i].title.split(": ")[3].split("\n")[0].split(",").length ==1)
+                ots[i].style.borderRight="1px dotted #800000"
+
+
             ots[i].style.pointerEvents = "none";
-            ots[i].style.color = getComputedStyle(ots[i].parentElement).backgroundColor ;
+            ots[i].style.color = getComputedStyle(ots[i].parentElement).backgroundColor;
+            console.log(ots[i])
         }
     }
     else{
         for (var i = 0; i < ots.length; i++) {
-            ots[i].classList.remove(ots[i].parentElement.className)
+            if (ots[i].parentElement.className ==="") {
+                ots[i].classList.remove(ots[i].parentElement.querySelectorAll("td")[0].className)
+            }else{
+                ots[i].classList.remove(ots[i].parentElement.className)
+            }
+            if (ots[i].title.split(": ")[2].split("\n")[0].split(",").length ==1)
+                ots[i].previousSibling.style.borderRight=""
+            if (ots[i].title.split(": ")[3].split("\n")[0].split(",").length ==1)
+                ots[i].style.borderRight=""
             ots[i].style.pointerEvents = "";
             ots[i].style.color=""
         }
