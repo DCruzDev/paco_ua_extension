@@ -171,7 +171,7 @@ function parseSubjectsRow(row){
 
         tempHours = subjects[i]["start"].replace("h","").split(",")
 
-        data = new Date();
+        data = new Date(2022, 02, 07);//new Date();
         if(tempHours.length>1)
             data.setHours(tempHours[0],parseFloat(tempHours[1].replace(",","."))*6,0);
         else
@@ -180,11 +180,11 @@ function parseSubjectsRow(row){
         datestart = data.toISOString().replace(/-|:|\.\d\d\d/g,"");
         min = parseFloat(subjects[i]["duration"].replace("h","").replace(",","."))*60
 
-        data = new Date(data.getTime()+min*60000)
-
+        data = new Date(data.getTime()  +min*60000)
+	
         dateend = data.toISOString().replace(/-|:|\.\d\d\d/g,"");
         link.searchParams.append("dates", datestart + "/" + dateend)
-        link.searchParams.append("recur","RRULE:FREQ=WEEKLY;BYDAY="+subjects[i]["day"]+";UNTIL=20210626T000000Z;");
+        link.searchParams.append("recur","RRULE:FREQ=WEEKLY;BYDAY="+subjects[i]["day"]+";UNTIL=20220624T000000Z;");
         link.searchParams.append("location", subjects[i]["room"]);
         link.searchParams.append("sf", "true");
         link.searchParams.append("output", "xml");
